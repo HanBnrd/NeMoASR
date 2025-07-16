@@ -5,13 +5,8 @@ import os
 from nemo.collections.asr.models import ASRModel, SortformerEncLabelModel
 from pydub import AudioSegment
 
-logging.disable(logging.CRITICAL)
 
 SEGMENT_DURATION = 7  # max duration fitting in GPU (in mins)
-
-argparser = argparse.ArgumentParser()
-argparser.add_argument("file", type=str, help='mp3 file to transcribe')
-args = argparser.parse_args()
 
 
 def convert(mp3file):
@@ -69,7 +64,15 @@ def transcribe(wavfile):
             fw.write(f"{speaker}: {text}\n")
 
 
-if __name__ == "__main__":
+def main():
+    logging.disable(logging.CRITICAL)
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument("file", type=str, help='mp3 file to transcribe')
+    args = argparser.parse_args()
     wavfile_list = convert(args.file)
     for wavfile in wavfile_list:
         transcribe(wavfile)
+
+
+if __name__ == "__main__":
+    main()
