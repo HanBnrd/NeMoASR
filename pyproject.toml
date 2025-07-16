@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Automatic speech recognition with speaker diarisation on small GPUs "
 
 [tool.poetry]
-packages = [{include = "nemoasr", from = "src"}]
+packages = [{include = "nemoasr"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
