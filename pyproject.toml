@@ -8,8 +8,8 @@ packages = [{include = "nemoasr"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-nemo-toolkit = "^2.3"
 pydub = "^0.25"
+nemo-toolkit = {version="^2.3", extras=["asr"]}
 
 [tool.poetry.scripts]
 nemoasr = "nemoasr.nemoasr:main"
