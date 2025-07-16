@@ -6,9 +6,6 @@ from nemo.collections.asr.models import ASRModel, SortformerEncLabelModel
 from pydub import AudioSegment
 
 
-SEGMENT_DURATION = 7  # max duration fitting in GPU (in mins)
-
-
 def convert(mp3file, segment_duration):
     sound = AudioSegment.from_file(mp3file)
     sound = sound.set_channels(1)
