@@ -13,7 +13,7 @@ def convert(mp3file, segment_duration):
     sound = AudioSegment.from_file(mp3file)
     sound = sound.set_channels(1)
     sound = sound.set_frame_rate(16000)
-    filename = f"{os.path.splitext(mp3file)[0]}.wav"
+    filename = f"{os.path.splitext(mp3file)[0]}"
 
     start = 0
     segment_number = 1
