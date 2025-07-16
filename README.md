@@ -5,11 +5,11 @@ Automatic speech recognition with speaker diarisation on small GPUs
 ## Setup
 ```bash
 sudo apt update && sudo apt install ffmpeg
-pip install pydub
-pip install nemo_toolkit["asr"]
+pip install git+https://github.com/HanBnrd/NeMoASR.git
+
 ```
 
 ## Usage
 ```bash
-python nemoasr.py myfile.mp3
+nemoasr myfile.mp3
 ```
