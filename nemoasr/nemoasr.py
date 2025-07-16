@@ -58,7 +58,7 @@ def transcribe(wavfile):
                 if round(diar[0]) <= round(start) <= round(diar[1]):
                     speaker = diar[-1]
                     break
-            fw.write(f"[{start}] {speaker}: {text}\n")
+            fw.write(f"[{start:.2f}] {speaker}: {text}\n")
 
 
 def main():
