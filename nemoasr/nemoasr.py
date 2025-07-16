@@ -9,16 +9,16 @@ from pydub import AudioSegment
 SEGMENT_DURATION = 7  # max duration fitting in GPU (in mins)
 
 
-def convert(mp3file):
+def convert(mp3file, segment_duration):
     sound = AudioSegment.from_file(mp3file)
     sound = sound.set_channels(1)
     sound = sound.set_frame_rate(16000)
     filename = f"{os.path.splitext(mp3file)[0]}.wav"
 
     start = 0
-    segment_number = 0
+    segment_number = 1
     wavfile_list = []
-    segment_duration_ms = SEGMENT_DURATION * 60 * 1000  # mins to ms
+    segment_duration_ms = round(segment_duration * 60 * 1000)  # mins to ms
     overlap_duration_ms = 5 * 1000  # 5 sec in ms
 
     while start < len(sound):
@@ -67,9 +67,12 @@ def transcribe(wavfile):
 def main():
     logging.disable(logging.CRITICAL)
     argparser = argparse.ArgumentParser()
-    argparser.add_argument("file", type=str, help='mp3 file to transcribe')
+    argparser.add_argument("file", type=str,
+                           help='mp3 file to transcribe')
+    argparser.add_argument("--max-duration", type=float, default=7,
+                           help='max duration fitting on GPU in minutes')
     args = argparser.parse_args()
-    wavfile_list = convert(args.file)
+    wavfile_list = convert(args.file, args.max_duration)
     for wavfile in wavfile_list:
         transcribe(wavfile)
 
