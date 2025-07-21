@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import logging
 import os
 
@@ -58,7 +59,8 @@ def transcribe(wavfile):
                 if round(diar[0]) <= round(start) <= round(diar[1]):
                     speaker = diar[-1]
                     break
-            fw.write(f"[{start:.2f}] {speaker}: {text}\n")
+            start = datetime.timedelta(seconds=round(start))
+            fw.write(f"[{str(start)}] {speaker}: {text}\n")
 
 
 def main():
