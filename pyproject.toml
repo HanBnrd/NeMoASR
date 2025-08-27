@@ -1,6 +1,6 @@
 [project]
 name = "nemoasr"
-version = "0.1.0"
+version = "0.2.0"
 description = "Automatic speech recognition with speaker diarisation on small GPUs "
 
 [tool.poetry]
@@ -9,7 +9,7 @@ packages = [{include = "nemoasr"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 pydub = "^0.25"
-nemo-toolkit = {version="^2.3", extras=["asr"]}
+nemo-toolkit = {version="^2.4", extras=["asr"]}
 
 [tool.poetry.scripts]
 nemoasr = "nemoasr.nemoasr:main"

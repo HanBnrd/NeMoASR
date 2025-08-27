@@ -34,7 +34,7 @@ def convert(mp3file, segment_duration):
 def transcribe(wavfile):
     print(f"===\nTranscribing {wavfile}\n---")
     asr_model = ASRModel.from_pretrained(
-        "nvidia/parakeet-tdt-0.6b-v2"
+        "nvidia/parakeet-tdt-0.6b-v3"
     )
     transcribed = asr_model.transcribe([wavfile], timestamps=True)
     transcribed = transcribed[0].timestamp['segment']
