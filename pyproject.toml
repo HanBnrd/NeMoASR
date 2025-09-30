@@ -1,7 +1,7 @@
 [project]
 name = "nemoasr"
 version = "0.2.0"
-description = "Automatic speech recognition with speaker diarisation on small GPUs "
+description = "Automatic speech recognition with speaker diarisation on small GPUs"
 
 [tool.poetry]
 packages = [{include = "nemoasr"}]
