@@ -16,8 +16,10 @@ Based on:
 sudo apt install ffmpeg
 ```
 ```bash
-pip install git+https://github.com/HanBnrd/NeMoASR.git
-
+conda create -n nemoasr python=3.12
+conda activate nemoasr
+pip install uv
+uv pip install git+https://github.com/HanBnrd/NeMoASR.git
 ```
 
 **MacOS:**
@@ -25,14 +27,23 @@ pip install git+https://github.com/HanBnrd/NeMoASR.git
 brew install ffmpeg
 ```
 ```bash
-pip install git+https://github.com/HanBnrd/NeMoASR.git
+conda create -n nemoasr python=3.12
+conda activate nemoasr
+pip install uv
+uv pip install git+https://github.com/HanBnrd/NeMoASR.git
 ```
 
 ## Usage
 ```bash
 nemoasr myfile.mp3
 ```
+> *Note: running this for the first time may be long as the models need to be downloaded.*
 
+The default configuration is cutting long audio files into chunks of 7 mins which should work on machines with little VRAM or RAM. However, the chunk duration can be changed. For example if the VRAM or RAM capacity is bigger:
+```bash
+nemoasr myfile.m4a --max-duration=12
+```
+This will cut a long audio file in chunks of 12 mins maximum.
 
 > ## Update NeMoASR
 > ```bash
