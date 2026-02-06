@@ -10,6 +10,7 @@ Based on:
 ## Requirements
 [Python 3.12+](https://www.anaconda.com/download/success)
 
+
 ## Setup
 **Linux:**
 ```bash
@@ -18,8 +19,9 @@ sudo apt install ffmpeg
 ```bash
 conda create -n nemoasr python=3.12
 conda activate nemoasr
-pip install uv
-uv pip install git+https://github.com/HanBnrd/NeMoASR.git
+```
+```bash
+pip install git+https://github.com/HanBnrd/NeMoASR.git
 ```
 
 **MacOS:**
@@ -29,24 +31,27 @@ brew install ffmpeg
 ```bash
 conda create -n nemoasr python=3.12
 conda activate nemoasr
-pip install uv
-uv pip install git+https://github.com/HanBnrd/NeMoASR.git
+```
+```bash
+pip install git+https://github.com/HanBnrd/NeMoASR.git
 ```
 
+
+## Update NeMoASR
+```bash
+pip install --upgrade git+https://github.com/HanBnrd/NeMoASR.git
+```
+
+
 ## Usage
+To transcribe a WAV or MPEG file:
 ```bash
 nemoasr myfile.mp3
 ```
 > *Note: running this for the first time may be long as the models need to be downloaded.*
 
-The default configuration is cutting long audio files into chunks of 7 mins which should work on machines with little VRAM or RAM. However, the chunk duration can be changed. For example if the VRAM or RAM capacity is bigger:
+The default configuration cuts long audio files into 7-minute chunks, which should work well on machines with limited RAM or VRAM. However, the chunk duration can be adjusted if needed. For example with more RAM or VRAM:
 ```bash
-nemoasr myfile.m4a --max-duration=12
+nemoasr myfile.mp3 --max-duration=12
 ```
-This will cut a long audio file in chunks of 12 mins maximum.
-
-> ## Update NeMoASR
-> ```bash
-> pip install --upgrade git+https://github.com/HanBnrd/NeMoASR.git
-> ```
->
+This will cut a long audio file into chunks of 12 minutes maximum.
